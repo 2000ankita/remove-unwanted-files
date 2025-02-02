@@ -1,13 +1,12 @@
 name: Create Random File Every Hour
-#
+
 on:
   push:
     branches:
       - dev
   schedule:
-    # This cron job triggers every hour
-    - cron: '0 * * * *'  # At minute 0 of every hour
-  workflow_dispatch:  # This allows manual triggering
+    - cron: '0 * * * *'  # Trigger every hour at minute 0
+  workflow_dispatch:
 
 jobs:
   create_random_file:
@@ -19,8 +18,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'  # Use the appropriate Python version
+          python-version: '3.x'
 
       - name: Create Random File
         run: |
           python3 create_random_file.py  # Ensure this file exists in your repo
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Add new random file"
+          git push origin dev
