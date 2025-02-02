@@ -21,5 +21,3 @@ jobs:
 
       - name: Run file removal script
         run: python remove_files.py
-
-      
