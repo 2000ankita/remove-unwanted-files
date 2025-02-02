@@ -1,0 +1,23 @@
+name: Create Random File Every Hour
+
+on:
+  schedule:
+    # This cron job triggers every hour
+    - cron: '0 * * * *'  # At minute 0 of every hour
+  workflow_dispatch:  # This allows manual triggering
+
+jobs:
+  create_random_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Use the appropriate Python version
+
+      - name: Create Random File
+        run: |
+          python3 create_random_file.py  # Ensure this file exists in your repo
