@@ -1,5 +1,2 @@
 Removed Files Report
 ====================
-Removed: MyReadme.md
-Removed: dimitris_announcement
-Removed: branch1502/test-file.txt
