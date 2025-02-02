@@ -1,0 +1,25 @@
+name: Remove Unnecessary Files
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  remove-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Uses the latest Python 3 version
+
+      - name: Run file removal script
+        run: python remove_files.py
+
+      
