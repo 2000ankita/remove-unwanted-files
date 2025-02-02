@@ -1,6 +1,9 @@
 name: Create Random File Every Hour
 
 on:
+  push:
+    branches:
+      - dev
   schedule:
     # This cron job triggers every hour
     - cron: '0 * * * *'  # At minute 0 of every hour
